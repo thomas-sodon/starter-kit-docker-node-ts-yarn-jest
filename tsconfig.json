@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "strict": true,
+      "preserveConstEnums": true,
+      "noEmit": false,
+      "sourceMap": false,
+      "rootDir": "./src",                                  /* Specify the root folder within your source files. */
+      "forceConsistentCasingInFileNames": true,  
+      "allowJs": true,
+      "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
+      "isolatedModules": true /* Ensure that each file can be safely transpiled without relying on other imports. */,
+      "allowSyntheticDefaultImports": true /* Allow 'import x from y' when a module doesn't have a default export. */,
+    },
+    "extends": "@tsconfig/node-lts/tsconfig.json",
+    "exclude": ["node_modules", "**/*.test.ts"],
+    "include": [
+      "src/**/*.ts"  ]
+  }

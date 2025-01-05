@@ -1,0 +1,60 @@
+{
+  "name": "starter-kit-docker-node-ts-yarn-jest",
+  "version": "1.0.0",
+  "description": "A basic project framework pre-configured with Docker, Node, Typescript, Yarn, and Jest",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "yarn": ">=1.22.22",
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "install:latest": "yarn upgrade-interactive --latest",
+    "test": "jest --detectOpenHandles",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "yarn compile && node dist/index.js",
+    "stop:docker": "docker kill starter-kit-docker-node-ts-yarn-jest-container; docker rm starter-kit-docker-node-ts-yarn-jest-container",
+    "start:docker": "yarn stop:docker; yarn build:docker && docker run -p 3000:3000 --name starter-kit-docker-node-ts-yarn-jest-container starter-kit-docker-node-ts-yarn-jest",
+    "compile": "tsc",
+    "build:docker": "docker build -t starter-kit-docker-node-ts-yarn-jest .",
+    "build": "yarn compile && esbuild ./src/index.ts --bundle --minify --sourcemap --platform=node --target=esnext --outfile=dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas-sodon/starter-kit-docker-node-ts-yarn-jest.git"
+  },
+  "author": "Thomas Sodon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomas-sodon/starter-kit-docker-node-ts-yarn-jest/issues"
+  },
+  "homepage": "https://github.com/thomas-sodon/starter-kit-docker-node-ts-yarn-jest#readme",
+  "dependencies": {
+    "config": "3.3.12",
+    "esbuild": "0.24.2",
+    "express": "4.21.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@tsconfig/node-lts": "^22.0.1",
+    "@types/config": "3.3.5",
+    "@types/eslint__js": "8.42.3",
+    "@types/express": "5.0.0",
+    "@types/jest": "29.5.14",
+    "@types/supertest": "6.0.2",
+    "@typescript-eslint/eslint-plugin": "8.19.0",
+    "@typescript-eslint/parser": "8.19.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.2.1",
+    "jest": "29.7.0",
+    "prettier": "3.4.2",
+    "supertest": "7.0.0",
+    "ts-jest": "29.2.5",
+    "ts-node": "10.9.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.19.0"
+  }
+}
